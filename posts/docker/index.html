@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.123.7">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://XxRa1n.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://XxRa1n.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2024. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <p>title: &ldquo;Docker 学习笔记&rdquo;
+date: 2024-01-24 18:00:00 +0800
+author: me
+cover: &ldquo;-/images/example.png&rdquo;
+tags:
+- 代码
+- web</p>
+<hr>
+<h1 id="docker-学习笔记">Docker 学习笔记</h1>
+<h2 id="1docker-introduction">1.Docker Introduction</h2>
+<p>传统软件-虚拟机-容器
+Docker容器直接与操作系统内核交互</p>
+<p><strong>镜像</strong>：
+镜像(Image)：Docker将应用程序及其所需的依赖、函数库、环境、配置等文件打包在一起，称为镜像。</p>
+<p><strong>容器</strong>：
+容器(Container)：镜像中的应用程序运行后形成的进程就是容器，只是Docker会给容器进程做隔离，对外不可见。</p>
+<p><strong>DockerHub</strong>：
+DockerHub是Docker公司托管的公共镜像仓库。类似的平台统称Docker registry</p>
+<p><strong>Docker架构</strong>:
+Docker是一个CS架构的程序，由两部分组成：</p>
+<ul>
+<li>server：Docker守护进程，负责处理Docker指令，管理镜像、容器等</li>
+<li>client：通过命令或RestAPI向Docker服务器发送指令。可以在本地或远程向Docker服务器发送指令。</li>
+</ul>
+<p>client-&gt;server-&gt;registry
+client向server发送指令，server接收指令向registry请求镜像，并完成容器创建。</p>
+<h2 id="2docker安装">2.Docker安装</h2>
+<p>去官网查看安装教程</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 启动Docker</span>
+</span></span><span style="display:flex;"><span>systemctl start docker
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 关闭Docker</span>
+</span></span><span style="display:flex;"><span>systemctl stop docker
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启Docker</span>
+</span></span><span style="display:flex;"><span>systemctl restart docker
+</span></span></code></pre></div><p>国内镜像：
+到国内云服务商官方文档查找</p>
+<h2 id="3docker基本操作">3.Docker基本操作</h2>
+<p><strong>镜像相关命令</strong>：</p>
+<ul>
+<li>镜像名称一般分两部分组成：[repository]:[tag];tag就是版本号，如果tag省略，默认是latest(最新版)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker build <span style="color:#75715e"># 从本地Dockerfile构建镜像</span>
+</span></span><span style="display:flex;"><span>docker pull <span style="color:#75715e"># 从Docker Registry拉取镜像</span>
+</span></span><span style="display:flex;"><span>docker images <span style="color:#75715e"># 查看本地镜像列表</span>
+</span></span><span style="display:flex;"><span>docker rmi <span style="color:#75715e"># 删除镜像，rmi是remove image的缩写，可以删除一个或多个镜像</span>
+</span></span><span style="display:flex;"><span>docker push <span style="color:#75715e"># 推送镜像到服务器</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker save -o xxx.tar xxx:latest <span style="color:#75715e"># 保存镜像为一个压缩包</span>
+</span></span><span style="display:flex;"><span>docker load -i xxx.tar <span style="color:#75715e"># 把docker压缩包导入为镜像</span>
+</span></span></code></pre></div><p><strong>容器相关命令</strong>：
+容器状态：[运行、暂停、停止]</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run <span style="color:#75715e"># 创建并启动一个容器</span>
+</span></span><span style="display:flex;"><span>docker rm <span style="color:#75715e"># 删除容器</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker pause <span style="color:#75715e"># 运行状态-&gt;暂停状态</span>
+</span></span><span style="display:flex;"><span>docker unpause <span style="color:#75715e"># 暂停状态-&gt;运行状态</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker stop <span style="color:#75715e"># 运行状态-&gt;停止状态</span>
+</span></span><span style="display:flex;"><span>docker start <span style="color:#75715e"># 停止状态-&gt;运行状态</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker ps <span style="color:#75715e"># 查看所有运行的容器及状态</span>
+</span></span><span style="display:flex;"><span>docker logs <span style="color:#75715e"># 查看容器日志</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker exec <span style="color:#75715e"># 进入容器内部执行命令</span>
+</span></span></code></pre></div><p><strong>创建运行一个Nginx容器的示例</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run --name containerName -p 80:80 -d nginx
+</span></span></code></pre></div><ul>
+<li>docker run:创建并运行一个容器</li>
+<li>&ndash;name:给容器命名</li>
+<li>-p:端口映射，将宿主机端口与容器端口映射，冒号左边是宿主机端口，右边是容器端口</li>
+</ul>
+<blockquote>
+<p>为什么需要端口映射？因为容器是对外隔离的。外部请求想要访问容器，就需要通过宿主机的端口映射到容器内部的端口。</p>
+</blockquote>
+<ul>
+<li>-d:后台运行容器</li>
+<li>nginx:镜像名称,默认版本是latest</li>
+</ul>
+<p><strong>进入容器内部执行命令</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec -it containerName bash
+</span></span></code></pre></div><ul>
+<li>docker exec:进入容器内部执行命令</li>
+<li>it:给当前进入的容器创建一个标准输入、输出终端，允许我们与容器交互</li>
+<li>mn:要进入的容器的名称</li>
+<li>bash:进入容器后执行的命令，bash是一个linux终端交互命令</li>
+</ul>
+<blockquote>
+<p>不推荐直接在Docker容器内部修改文件</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 输入exit退出docker容器环境</span>
+</span></span><span style="display:flex;"><span>exit
+</span></span></code></pre></div><h2 id="4docker数据">4.Docker数据</h2>
+<p>容器与数据耦合存在的问题：</p>
+<ul>
+<li>不便于修改</li>
+<li>数据不可复用</li>
+<li>升级维护困难</li>
+</ul>
+<p>数据卷(volume)是一个虚拟目录，指向宿主机文件系统中的某个目录。</p>
+<p>操作数据卷：
+<code>docker volume [Command]</code></p>
+<ul>
+<li>create:创建一个volume</li>
+<li>inspect:显示一个或多个volume的信息</li>
+<li>ls:列出所有的volume</li>
+<li>prune:删除未使用的volume</li>
+<li>rm:删除一个或多个指定的volume</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker volume create my-vol
+</span></span><span style="display:flex;"><span>docker volume ls
+</span></span><span style="display:flex;"><span>docker volume inspect my-vol
+</span></span><span style="display:flex;"><span>docker volume rm my-vol
+</span></span></code></pre></div><p><strong>数据卷挂载</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name web<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -v html:/root/html<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -p 8080:80<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  nginx
+</span></span></code></pre></div><p><code>-v html:/root/html</code>表示把html数据卷挂载到容器内的/root/html目录。</p>
+<p>除了目录挂载还可以进行文件挂载
+<code>-v /tmp/mysql/conf/hmy.cnf:/etc/mysql/conf.d/hmy.cnf</code>
+表示用容器外的<code>/tmp/mysql/conf/hmy.cnf</code>覆盖容器内的文件<code>/etc/mysql/conf.d/hmy.cnf</code>。
+容器内的文件目录要去官方网站查询</p>
+<h2 id="5镜像结构">5.镜像结构</h2>
+<p>基础镜像(BaseImage):包含基础的系统函数库、环境变量、文件系统
+入口(Entrypoint)：入口，是镜像中应用启动的命令
+其他：在BaseImage的基础上添加依赖、安装程序、完成整个应用的安装和配置</p>
+<h2 id="6dockerfile">6.Dockerfile</h2>
+<p>Dockerfile是一个文本文件，其中包含一个个的指令，用指令在说明要执行什么操作来构建镜像。每一个指定都会形成一层Layer</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FROM</td>
+<td>指定基础镜像</td>
+<td>FROM centos:7</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>设置环境变量</td>
+<td>ENV MYSQL_VERSION 5.6</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>将文件从宿主主机复制到容器中</td>
+<td>COPY ./package.json /usr/src/app/</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>执行shell命令</td>
+<td>RUN yum -y install nginx</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>指定容器运行时监听的端口</td>
+<td>EXPOSE 8080</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>指定容器启动时执行的命令</td>
+<td>ENTRYPOINT java -jar xx.jar</td>
+</tr>
+</tbody>
+</table>
+<p>详细语法参考官方网站:<a href="https://docs.docker.com/engine/reference/builder">https://docs.docker.com/engine/reference/builder</a></p>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docer build -t javaweb:1.0 .
+</span></span></code></pre></div><ul>
+<li>-t javaweb:1.0 指定生成的镜像名称和标签</li>
+<li>. 指定Dockerfile的路径，这里使用相对路径，即当前目录</li>
+</ul>
+<h2 id="7dockercompose集群部署">7.DockerCompose集群部署</h2>
+<p>DockerCompose可以基于Compose文件帮我们快速部署分布式应用，而无需手动一个个创建和运行容器。
+Compose文件是一个文本文件，通过指令定义集群中的每个容器如何运行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.8&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">mysql</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:5.7</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">MYSQL_ROOT_PASSWORD</span>: <span style="color:#ae81ff">123456</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/tmp/mysql/data:/var/lib/mysql</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/tmp/mysql/conf/hmy.cnf:/etc/mysql/conf.d/hmy.cnf</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">web</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">8090</span>:<span style="color:#ae81ff">8090</span>
+</span></span></code></pre></div><blockquote>
+<p>注意使用容器部署时IP地址需要更改。Docker中可以用服务名称替代IP地址，例如mysql:3306，web:8090</p>
+</blockquote>
+<h2 id="8docker私有docker-registry">8.Docker私有Docker Registry</h2>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

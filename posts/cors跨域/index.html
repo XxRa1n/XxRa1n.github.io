@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.123.7">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://XxRa1n.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://XxRa1n.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2024. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <p>type: page
+title: &ldquo;CORS&rdquo;
+author: me</p>
+<hr>
+<h1 id="跨域访问cross-origin-resource-sharing">跨域访问（Cross Origin Resource Sharing）</h1>
+<h2 id="1什么是跨域访问问题">1.什么是跨域访问问题</h2>
+<p>HTTP协议规定，浏览器只能访问与当前页面<strong>同源</strong>的资源，这通常被称为“同源政策”。
+<strong>相关定义：</strong>
+源（Origin）：协议+主域+端口；
+同源（Same Origin）：协议，域名，端口三者都相同视为同源；
+跨域：是指资源的源和文档的源不同。</p>
+<h2 id="2跨域访问的解决方案">2.跨域访问的解决方案</h2>
+<h3 id="21普通的跨域请求">2.1普通的跨域请求</h3>
+<p>nginx拦截请求，proxy_pass转发，修改http请求头
+web后端支持跨域：</p>
+<ul>
+<li>@CrossOrigin注解</li>
+<li>配置拦截器，WebMvcConfigurer</li>
+</ul>
+<h3 id="22携带cookie的跨域请求">2.2携带Cookie的跨域请求</h3>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

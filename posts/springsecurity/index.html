@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.123.7">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://XxRa1n.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://XxRa1n.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2024. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <p>title: &ldquo;SpringSecurity 学习笔记&rdquo;
+date: 2023-12-17 18:00:00 +0800
+author: me
+cover: &ldquo;-/images/example.png&rdquo;
+tags:
+- 代码
+- web</p>
+<hr>
+<blockquote>
+<p>来自Spring Security官方文档</p>
+</blockquote>
+<h2 id="功能介绍">功能介绍</h2>
+<p>Spring Security的三个功能(特性):</p>
+<ul>
+<li>认证(Authentication)</li>
+<li>防范漏洞攻击</li>
+<li>与Servlet API和Spring MVC的整合</li>
+</ul>
+<h3 id="1认证">1.认证</h3>
+<p>关于密码编码和存储的功能
+核心就是引入了DelegatingPasswordEncoder</p>
+<h3 id="2防范漏洞攻击">2.防范漏洞攻击</h3>
+<h4 id="21-csrf">2.1 CSRF</h4>
+<p>CSRF(cross-site request forgery)，即跨站请求伪造。
+工作原理是诱导用户发送请求，利用用户本地Cookie，通过目标网站的身份认证。
+Spring提供两种方式来防止CSRF攻击：</p>
+<ul>
+<li>同步令牌(Synchronizer Token)</li>
+<li>在Session cookie上指定SameSite属性</li>
+</ul>
+<h5 id="同步令牌">同步令牌：</h5>
+<p>详见JWT(JSON Web Token)的工作原理
+token不存储在cookie中，在每次请求的时候加在http header中。黑客网站伪造的请求无法获取到token，因此无法通过身份验证。</p>
+<h5 id="samesite">SameSite：</h5>
+<p>规定跨站请求中是否发送Cookie，默认是Lax，即在跨站请求中不发送Cookie。不发送Cookie，跨站请求伪造攻击自然没法通过身份认证。</p>
+<h4 id="22-httpheader">2.2 HTTPHeader</h4>
+<p>Spring Security 提供了一些功能和配置选项，以便在应用程序中管理和处理 HTTP 头（HTTP headers）</p>
+<h3 id="3与servlet-api和spring-mvc的整合">3.与Servlet API和Spring MVC的整合</h3>
+<ul>
+<li>Spring Security Crypto模块</li>
+<li>Spring Security Data模块</li>
+<li>新的并发API</li>
+</ul>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

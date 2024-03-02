@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.123.7">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://XxRa1n.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://XxRa1n.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2024. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <p>title: &ldquo;用户管理系统&rdquo;
+date: 2023-12-17 18:00:00 +0800
+author: me
+cover: &ldquo;-/images/example.png&rdquo;
+tags:
+- 代码
+- Java</p>
+<hr>
+<h1 id="用户中心">用户中心</h1>
+<h1 id="企业项目流程">企业项目流程</h1>
+<p>需求分析=&gt;设计(概要设计,详细设计)=&gt;技术选型=&gt;
+初始化/引入需要的技术=&gt;写Demo=&gt;写代码(实现业务逻辑)=&gt;
+测试(单元测试)=&gt;代码提交/代码评审=&gt;部署=&gt;发布</p>
+<h1 id="需求分析">需求分析</h1>
+<p>1.登录/注册
+2.用户管理(仅管理员可见) <strong>对用户的查询或者修改</strong>
+3.用户校验</p>
+<h1 id="技术选型">技术选型</h1>
+<p>前端:三件套 + React + 组件库Ant Design + Umi开发框架(alibaba) + Ant Design Pro(现成的管理系统)
+后端： java+spring+springmvc+mybatis-plus+springboot+mysql
+部署：服务器</p>
+<h1 id="计划">计划</h1>
+<h4 id="1初始化项目">1.初始化项目</h4>
+<p>  1.前端初始化
+    1.初始化项目
+    2.引入一些组件
+    3.框架瘦身
+  2.后端初始化
+    1.准备环境(MySQL之类的)
+    2.引入框架(整合框架)</p>
+<h4 id="2登录注册">2.登录/注册</h4>
+<p>  1.前端
+  2.后端</p>
+<h4 id="3用户管理仅管理员可见">3.用户管理(仅管理员可见)</h4>
+<p>  1.前端
+  2.后端</p>
+<h3 id="前端">前端</h3>
+<h4 id="1初始化项目引入组件">1.初始化项目+引入组件</h4>
+<p>Ant Design Pro
+1.yarn
+比npm更快的nodejs包管理工具
+可以使用npm install -g yarn安装，-g代表global全局安装.
+2.下载Ant Design Pro
+根据官网的quick start,使用脚手架安装
+3.打开项目,下载依赖
+在terminal中输入yarn下载依赖
+依赖的详细配置在package.json中的dependencies中
+4.运行项目
+package.json的scripts中有很多预定义的命令
+预定义的start命令就是启动项目的命令
+在terminal中输入yarn start
+5.Umi UI
+安装Umi UI
+<code>yarn add @umijs/preset-ui -D</code>
+然后再运行项目，Umi UI会显示在浏览器的右下角。
+Umi UI可以快速生成前端模板和组件的代码
+Umi UI实际上在执行的步骤：</p>
+<pre tabindex="0"><code>git pull [对应页面现成的代码]
+yarn install
+</code></pre><h4 id="2项目瘦身">2.项目瘦身</h4>
+<ul>
+<li>myapp-mock:模拟后台</li>
+<li>myapp-public:静态资源</li>
+<li>myapp-src:代码
+<ul>
+<li>myapp-src-components:组件</li>
+<li>myapp-src-pages:页面</li>
+<li>myapp-src-e2e:测试</li>
+<li>myapp-src-locales:国际化，多语言支持。
+删除对国际化的支持运行<code>yarn i18n-remove</code>,是package.json中预定义好的命令</li>
+</ul>
+</li>
+<li>myapp-services:
+<ul>
+<li>myapp-services-swagger: 接口文档</li>
+<li>myapp-services-app.tsx: 项目入口</li>
+<li>myapp-services-global.tsx: 全局脚本文件</li>
+<li>myapp-services-typings.d.ts: 类似C语言中的宏定义</li>
+</ul>
+</li>
+</ul>
+<h4 id="3登录注册与后端对接">3.登录注册与后端对接</h4>
+<p><strong>（1）找到发送请求的代码，修改相关实体类</strong>
+实体类在services-typings.d.ts中定义
+选中变量名<code>shift+F6</code>可以批量修改变量名称
+<strong>（2）找到接收请求的代码，修改相关实体类</strong>
+<strong>（3）修改请求地址</strong>
+AntDesign中使用封装了axios的request库发送请求
+request库来自umiJS
+修改默认请求地址需要再app.tsx中加入如下代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">type</span> { <span style="color:#a6e22e">RequestConfig</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;umi&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 设置请求URL */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">request</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">RequestConfig</span> <span style="color:#f92672">=</span> { <span style="color:#75715e">// RequestConfig的其他配置详见源码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">prefix</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://localhost:8080&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>（4）解决跨域请求问题</strong>
+前端和后端的[协议、域名、端口]三者任一不一致，就会产生跨域请求问题。
+<strong>！！！解决跨域访问的方法：</strong>
+<strong>代理：</strong>
+正向代理：替客户端向服务器发送请求
+反向代理：替服务器接收请求
+<strong>！！！可以单独写一篇Markdown文档</strong>
+<a href="https://cloud.tencent.com/developer/article/1841687">后端解决跨域请求的方法</a>：其中Filter是Servlet提供的，@CrossOrigin是作用于spring框架中controller层的注解，WebMvcConfigurer接口是 Spring 框架提供的一个扩展点，用于配置 Spring MVC 的行为
+<strong>！！！前端也要修改ajax请求，跨域访问才能携带Cookie</strong>
+umijs中的异步请求是由request函数完成的，request是对axios的封装，axios是对ajax的封装。ajax要修改withCredentials属性为true。request封装后，要修改credentials为include。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span><span style="color:#a6e22e">requestMethodInstance</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">credentials</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;include&#39;</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>听说JWT流行以后Cookie就不经常使用了，要了解一下JWT。</p>
+<h4 id="4通过后端保存的session获取用户登录状态">4.通过后端保存的session获取用户登录状态</h4>
+<p>提交请求到后端，获取session，根据session中的信息从数据库中实时获取信息</p>
+<h4 id="5用户注销">5.用户注销</h4>
+<h4 id="ant-design-proumi-框架">Ant Design Pro(Umi 框架)</h4>
+<p>app.tsx项目是全局入口文件，定义了整个项目中使用的公共数据（比如用户信息）
+access.ts控制用户的访问权限</p>
+<h4 id="procomponents高级表单">ProComponents高级表单</h4>
+<p>1.通过columns定义表格有哪些列
+2.columns属性：<strong>详见参考文档</strong></p>
+<ul>
+<li>dataindex：对应返回对象的属性</li>
+<li>title：表格列名</li>
+<li>copyable：是否允许复制</li>
+<li>ellipsis：是否允许缩略</li>
+<li>valueType：用于声明这一列的类型</li>
+</ul>
+<h3 id="后端">后端</h3>
+<h4 id="1项目初始化">1.项目初始化</h4>
+<ul>
+<li>SpringBoot官网的Template</li>
+<li>IDEA中使用Spring Initializer生成项目</li>
+</ul>
+<p>后端技术介绍：</p>
+<ul>
+<li>java</li>
+<li>spring (依赖注入框架，帮助你管理Java对象，集成一些其他的内容)</li>
+<li>springmvc（web框架，提供接口访问、restful接口等能力）</li>
+<li>mybatis（Java操作数据库的框架，持久层框架，对jdbc的封装）</li>
+<li>mybatis-plus（对mybatis的增强，不用写sql也能实现增删改查）</li>
+<li>springboot（<strong>快速启动</strong>/快速集成项目。不用自己管理spring配置，不用自己整合各种框架）</li>
+<li>mysql</li>
+</ul>
+<p>@Autowired会按照类型注入
+@Resource会按照名称注入</p>
+<p><strong>！！！需要学习</strong>
+<strong>junit的使用</strong>
+<strong>@Test的作用</strong>：测试方法必须用@Test修饰</p>
+<p><strong>@RunWith()的作用</strong>：Junit中指定测试运行器test runner</p>
+<p><strong>@SpringBootTest(classes=)的作用,测试类中的方法没有和Java文件夹中的类有联动关系？</strong>：@SpringBootTest 注解告诉Spring Boot测试框架要加载整个应用程序上下文，而不仅仅是某个特定的切片（slice）。这样，测试类就可以像一个独立的Spring Boot应用程序一样访问所有的bean和配置。</p>
+<p><strong>Spring框架下的Junit</strong>：不需要手动写Test runner，默认使用SpringJUnit4ClassRunner.class作为test runner。</p>
+<pre tabindex="0"><code>用户库表的设计
+登录注册的前端开发
+用户管理后台的前后端开发
+</code></pre><h4 id="2数据库设计">2.数据库设计</h4>
+<p>用户表：
+id primary key bigint
+username varchar
+userAccount varchar
+avatarUrl varchar
+gender tinyint
+userPassword varchar
+phone varchar
+email varchar
+isValid 是否有效 tinyint</p>
+<p>createTime datetime
+updateTime datetime
+isDelete 逻辑删除 tinyint
+<strong>注：isDelete逻辑删除，在使用mybatis-plus的时候，需要在application.yml中配置该字段，然后再到实体类中对应字段处加上<code>@TableLogic</code>注解</strong></p>
+<p><strong>使用IDEA中MyBatisX根据数据库表生成实体类</strong></p>
+<p>虽然自动生成实体类很容易，但是也不能完全依赖自动生成的实体类。要了解xml文件如何进行配置，以及mapper接口、实体类和xml配置文件之间的对应关系。</p>
+<p><strong>！！！MyBatis-Plus会自动生成什么方法？给哪个类生成？如何调用？</strong>：
+MyBatis-Plus会自动生成增删改查方法，给Mapper接口生成，需要调用时，直接调用即可。
+自动生成的service类会继承Mapper接口，service类中用this可以调用封装后更复杂的方法。</p>
+<p><strong>实体类</strong>：表示数据库中表的映射，每个实体类对应数据库表中的一条记录
+<strong>Mapper接口</strong>：定义了数据库操作的方法，每一个方法对应一个或多个sql语句
+<strong>Mapper XML文件</strong>：Mapper XML文件用于存储实际的SQL语句，将Mapper接口中的方法与SQL语句进行映射。通过<code>&lt;mapper namespace=&quot;&quot;&gt;&lt;/mapper&gt;</code>中namespace指定与哪个Mapper接口映射
+<strong>@MapperScan</strong>：在入口类中使用，用于扫描Mapper接口的注解，将其注册为Spring Bean</p>
+<h4 id="3用户登录注册">3.用户登录注册</h4>
+<h5 id="注册功能">注册功能：</h5>
+<p>注册逻辑：</p>
+<ol>
+<li>用户在前端输入用户名、密码、二次输入密码以及校验码</li>
+<li>校验用户的账户、密码是否符合规则（前端验证+后端验证）
+<ol>
+<li>账户长度</li>
+<li>密码长度</li>
+<li>账户重复与否</li>
+<li>账户名不包含特殊字符</li>
+<li>密码和校验码密码相同</li>
+</ol>
+</li>
+<li>密码加密，然后存储到数据库中</li>
+<li>向数据库插入用户数据</li>
+</ol>
+<p><strong>校验用户名和密码有一个使用的库：apache common utils</strong></p>
+<p>加密算法：
+使用MessageDigest类，该类是加密算法的抽象，提供了一系列加密方法。<strong>注意：有些情况下，字节数组要转换成字符串，否则是乱码。</strong></p>
+<h5 id="登录功能">登录功能：</h5>
+<p>登录功能
+后端用户管理接口
+前端用户登录注册功能
+如何校验用户</p>
+<p><strong>登录逻辑</strong>：
+接收参数：用户账户、密码【可选用JWT】
+请求类型：POST
+请求体：JSON
+返回值：用户信息</p>
+<p>步骤：
+1.校验账户和密码是否合法
+2.校验密码是否输入正确
+3.返回用户信息(脱敏)
+4.记录用户登录状态(session)</p>
+<p><strong>!!!日志</strong>
+<code>@Slf4j</code>:Lombok提供的日志</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// 简单用法</span>
+</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">info</span>(<span style="color:#e6db74">&#34;some infomation&#34;</span>);
+</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;&#34;</span>)
+</span></span></code></pre></div><p><strong>用户登录状态如何保存</strong>：
+1.连接服务器端后，得到一个session状态，返回给前端
+2.登录成功后，得到一个登录成功的session，并给session存入一些值，并返回给前端一个cookie命令
+3.前端收到后端返回的命令后，设置cookie，保存到浏览器中
+4.前端再次请求后端的时候(相同的域名)，在请求头中带上cookie去请求
+5.后端根据前端提供的cookie找到对应的session。
+6.后端从session中取出用户信息</p>
+<h4 id="4用户管理接口">4.用户管理接口</h4>
+<p><strong>需要先鉴定权限</strong>
+1.查询用户
+1.允许根据用户名查询
+2.删除用户</p>
+<h4 id="5用户注销-1">5.用户注销</h4>
+<p>删除session中保存用户登录状态的键值对</p>
+<h4 id="6后端优化">6.后端优化</h4>
+<p>(1)通用返回对象</p>
+<ul>
+<li>创建一个ResponseResult类，用于封装返回值</li>
+<li>创建一个枚举类型，用于封装返回状态码</li>
+</ul>
+<p>(2)封装全局异常处理</p>
+<ul>
+<li>定义业务异常类，继承RuntimeException，重写方法</li>
+<li>编写全局异常handler：捕获代码中所有的异常，集中处理，不暴露服务器内部状态。</li>
+</ul>
+<p>(3)全局请求日志和登录校验</p>
+<h3 id="项目部署上线">项目部署上线</h3>
+<h4 id="1项目多环境">1.项目多环境</h4>
+<p>多环境：开发/测试/生产
+上线时对项目的优化:</p>
+<ul>
+<li>本地日志</li>
+<li>精简依赖</li>
+<li>项目的环境/参数可以调整,比如JVM参数</li>
+</ul>
+<p>1.web服务器部署　
+2.容器部署</p>
+<h4 id="前端多环境">前端多环境</h4>
+<ul>
+<li>请求地址
+<ul>
+<li>开发环境：http://localhost:8000</li>
+<li>线上环境：服务器ip和域名</li>
+</ul>
+</li>
+</ul>
+<p>使用umi框架，build时会自动传入NODE_ENV == production参数；如果用start命令，NODE_ENV == development</p>
+<ul>
+<li>
+<p>启动方式:</p>
+<ul>
+<li>开发环境：npm run start 本地启动，监听端口，自动更新</li>
+<li>线上环境：npm run build 项目构建打包，可以在打包dist文件夹目录中使用serve命令在本地构建服务器启动项目[<code>npm -i g serve</code>安装serve]</li>
+</ul>
+</li>
+<li>
+<p>项目的配置
+不同的框架区分环境的配置文件命名方式不一样，可以去参考文档查找。以umijs为例：</p>
+<ul>
+<li>开发环境：config.dev.ts</li>
+<li>生产环境：config.prod.ts</li>
+<li>公共配置：config.ts</li>
+</ul>
+</li>
+</ul>
+<h4 id="后端多环境">后端多环境</h4>
+<p>配置多个application.yml。通过不同的后缀区分不同环境的配置文件。
+配置文件的主要区别：</p>
+<ul>
+<li>数据库地址</li>
+<li>缓存地址</li>
+<li>服务器配置</li>
+</ul>
+<h4 id="2项目打包">2.项目打包</h4>
+<ul>
+<li>
+<p>前端打包
+npm run build打包文件到dist目录下，在dist目录下运行serve命令启动本地服务器。</p>
+</li>
+<li>
+<p>后端打包
+使用maven打包，生成jar包。
+<code>java -jar xxx.jar --spring.profiles.active=prod</code>生产环境
+<code>java -jar xxx.jar --spring.profiles.active=dev</code>开发环境</p>
+</li>
+</ul>
+<h4 id="3项目部署原生部署">3.项目部署【原生部署】</h4>
+<p>需要web服务器：<strong>nginx</strong>、apache、tomcat</p>
+<p>nginx：</p>
+<ul>
+<li>安装nginx</li>
+<li>启动nginx</li>
+<li>配置nginx.conf</li>
+<li>更新配置<code>nginx -s reload</code></li>
+</ul>
+<p>拷贝项目：</p>
+<ul>
+<li>拷贝build生成的dist目录到web服务器的指定目录下</li>
+<li>拷贝maven打包的jar包到web服务器的指定目录下</li>
+</ul>
+<p>前端：</p>
+<ul>
+<li>nginx静态代理</li>
+</ul>
+<p>后端：</p>
+<ul>
+<li>java运行jar包</li>
+</ul>
+<h4 id="4项目部署容器部署">4.项目部署【容器部署】</h4>
+<p>使用Docker容器部署
+<strong>Docker的优点</strong>：可以将项目的环境(java、nginx)和项目的代码打包成镜像，容易分发和移植。
+<strong>制作Docker镜像步骤</strong>：</p>
+<ul>
+<li>编写Dockerfile文件，定义镜像的构建规则和步骤。</li>
+<li>只用docker命令制作镜像</li>
+<li>制作成功后，使用docker命令运行镜像</li>
+</ul>
+<p><strong>Dockerfile文件</strong>：</p>
+<ul>
+<li>FROM 依赖的基础镜像</li>
+<li>WORKDIR 指定工作目录</li>
+<li>COPY 从本机复制文件</li>
+<li>RUN 执行命令</li>
+<li>CMD/ENTRYPOINT 指定容器启动时执行的命令</li>
+</ul>
+<h3 id="项目后续">项目后续</h3>
+<p>1.可以功能扩充：</p>
+<ul>
+<li>管理员创建用户、修改用户信息、删除用户</li>
+<li>上传头像</li>
+<li>按照更多的条件去查询用户</li>
+<li>更改权限</li>
+</ul>
+<p>2.修改Bug</p>
+<p>3.项目登录改为分布式session(单点登录)</p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

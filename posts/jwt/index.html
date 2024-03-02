@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.123.7">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; My New Hugo Site</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://XxRa1n.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://XxRa1n.github.io/"><h1>My New Hugo Site</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://XxRa1n.github.io/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2024. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <p>title: &ldquo;JWT&rdquo;
+date: 2023-12-17 18:00:00 +0800
+author: me
+cover: &ldquo;-/images/example.png&rdquo;
+tags:
+- 代码
+- web</p>
+<hr>
+<h1 id="json-web-token">JSON Web Token</h1>
+<p>简称JWT</p>
+<h3 id="1jwt是什么">1.JWT是什么</h3>
+<p>JWT是一种安全的传输JSON对象的标准</p>
+<h3 id="2jwt的用途">2.JWT的用途</h3>
+<h4 id="21身份验证">2.1身份验证</h4>
+<p>用户登录后，服务器返回一个JWT，客户端存储在本地，后续请求中携带JWT，服务器验证JWT的有效性，确定用户身份。
+JWT常在<strong>单点登录</strong>中做身份验证。</p>
+<blockquote>
+<p><strong>单点登录</strong>：单点登录（SSO）是一种身份验证解决方案，可让用户通过一次性用户身份验证登录多个应用程序和网站。</p>
+</blockquote>
+<h4 id="22传输信息">2.2传输信息</h4>
+<p>JWT可以包含需要传输的信息，例如用户ID、角色、权限等。jwt的签名可以验证传输信息是否被修改，从而保证数据的安全性。</p>
+<h3 id="3jwt的结构">3.JWT的结构</h3>
+<ul>
+<li>Header：记录类型和加密算法</li>
+<li>Payload：记录Json格式的信息</li>
+<li>Signature：使用Header和Payload中的信息生成签名
+其中Header和Payload使用Base64URL编码明文存储，Signature使用HMAC SHA256加密算法进行签名。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Signature生成示例代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">encodedString</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">base64UrlEncode</span>(<span style="color:#a6e22e">header</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">base64UrlEncode</span>(<span style="color:#a6e22e">payload</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">signature</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">HMACSHA256</span>(<span style="color:#a6e22e">encodedString</span>, <span style="color:#e6db74">&#39;secret&#39;</span>); <span style="color:#75715e">// TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
+</span></span></span></code></pre></div><h3 id="4工作jwt示例">4.工作JWT示例</h3>
+<p>一个服务器：
+<img src="./images/Jwt_workprocess.png" alt="Jwt work process">
+Token发送由特定服务器完成：
+<img src="./images/Jwt_workprocess2.png" alt="Jwt work process2"></p>
+<h3 id="5jwt与传统session">5.JWT与传统Session</h3>
+<p>Session的缺点：</p>
+<ul>
+<li>session存储在服务器内存中，服务器开销大</li>
+<li>分布式环境下，session无法共享</li>
+<li>基于Cookie进行用户识别，Cookie保存在客户端中，危险性大</li>
+</ul>
+<p>Jwt的缺点：</p>
+<ul>
+<li>jwt的payload是明文存储，所以不能存放敏感信息</li>
+<li>jwt要放在http header中，比session请求开销大</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="6jwt在java中的使用">6.JWT在JAVA中的使用</h3>
+<h4 id="61-原生使用">6.1 原生使用</h4>
+<p>java-jwt库可实现相关功能。</p>
+<h4 id="62-spring-security集成使用">6.2 Spring Security集成使用</h4>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>
